@@ -3,7 +3,10 @@ import { Outlet } from "react-router-dom";
 function HomeLayout() {
     return (
         <>
-            <Outlet />
+            <section className="align-element py-20">
+                {" "}
+                <Outlet />
+            </section>
         </>
     );
 }
