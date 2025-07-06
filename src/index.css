@@ -1,5 +1,12 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: halloween, winter;
+    root: ":root";
+    include: ;
+    exclude: ;
+    prefix: ;
+    logs: true;
+}
 
 @layer components {
     .align-element {
