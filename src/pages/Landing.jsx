@@ -1,9 +1,10 @@
-import { Hero } from "../components";
+import { FeaturedProducts, Hero } from "../components";
 
 function Landing() {
     return (
         <>
             <Hero />
+            <FeaturedProducts />
         </>
     );
 }
