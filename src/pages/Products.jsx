@@ -1,5 +1,13 @@
+import { Filters, PaginationContainer, ProductsContainer } from "../components";
+
 function Products() {
-    return <h1 className="text-4xl">Products</h1>;
+    return (
+        <div>
+            <Filters />
+            <ProductsContainer />
+            <PaginationContainer />
+        </div>
+    );
 }
 
 export default Products;
