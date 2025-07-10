@@ -1,41 +1,30 @@
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-
 import NavLinks from "./NavLinks";
 
-const themes = {
-    winter: "winter",
-    halloween: "halloween",
-};
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
-const getThemeFromLocalStorage = () => {
-    return localStorage.getItem("theme") || themes.winter;
-};
+const Navbar = () => {
+    const numItemsInCart = useSelector(
+        (state) => state.cartState.numItemsInCart
+    );
 
-function Navbar() {
-    const [theme, setTheme] = useState(getThemeFromLocalStorage());
+    const dispatch = useDispatch();
     const handleTheme = () => {
-        const { winter, halloween } = themes;
-        const newTheme = theme === winter ? halloween : winter;
-        setTheme(newTheme);
+        dispatch(toggleTheme());
     };
-
-    useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
     return (
         <nav className="bg-base-200">
-            <div className="navbar align-element">
+            <div className="navbar align-element ">
                 <div className="navbar-start">
                     {/* Title */}
                     <NavLink
                         to="/"
                         className="hidden lg:flex btn btn-primary text-3xl items-center "
                     >
-                        K
+                        C
                     </NavLink>
                     {/* DROPDOWN */}
                     <div className="dropdown">
@@ -75,7 +64,7 @@ function Navbar() {
                         <div className="indicator">
                             <BsCart3 className="h-6 w-6" />
                             <span className="badge badge-sm badge-primary indicator-item">
-                                8
+                                {numItemsInCart}
                             </span>
                         </div>
                     </NavLink>
@@ -83,6 +72,5 @@ function Navbar() {
             </div>
         </nav>
     );
-}
-
+};
 export default Navbar;
