@@ -14,11 +14,15 @@ import {
     Orders,
 } from "./pages";
 
+import { store } from "./store";
 import { ErrorElement } from "./components";
 
 import { loader as landingLoader } from "./loaders/productsFeaturedLoader";
 import { loader as singleProductLoader } from "./loaders/SingleProductLoader";
 import { loader as productLoader } from "./loaders/productsLoader";
+
+import { registerAction } from "./actions/registerAction";
+import { loginAction } from "./actions/loginAction";
 
 const router = createBrowserRouter([
     {
@@ -70,10 +74,12 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
         errorElement: <Error />,
+        action: loginAction(store),
     },
     {
         path: "/register",
         element: <Register />,
+        action: registerAction,
         errorElement: <Error />,
     },
 ]);
