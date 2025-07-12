@@ -51,7 +51,6 @@ function Login() {
                 >
                     guest user
                 </button>
-                ;
                 <p className="text-center">
                     Not a member yet?
                     <Link
